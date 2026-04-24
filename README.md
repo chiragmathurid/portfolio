@@ -1,16 +1,57 @@
-# React + Vite
+# 👋 Hi, I'm Chirag
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my portfolio! I'm a passionate Frontend Developer who loves building impactful and user-friendly solutions.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 About Me
 
-## React Compiler
+* 💼 Frontend Developer with 3+ years of experience
+* ⚡ Specialized in building scalable, high-performance web apps
+* 🎯 Focused on clean UI architecture and performance optimization
+* 💬 Ask me about: React, Next.js, frontend performance, UI systems
+* 📫 How to reach me: [chiragmathur.id@gmail.com](mailto:chiragmathur.id@gmail.com)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Languages
+
+* JavaScript (ES6+), TypeScript, HTML5, CSS3/SCSS
+
+### Frameworks & Libraries
+
+* React.js, Next.js, Angular, Redux Toolkit, Context API
+
+### Tools & Platforms
+
+* Git, GitHub, GitLab, Jira, Postman, Figma, Chrome DevTools, Lighthouse
+
+---
+
+## 📂 Projects
+
+### 🔹 AI-Powered Search Platform
+
+* **Description:** Built a natural language search system using AI to improve product discovery
+* **Tech Used:** Next.js, OpenAI API, SerpAPI
+* **Impact:** Reduced search time by 80% and handled 250+ concurrent users
+
+### 🔹 E-commerce Platforms (Kalodoro, SCNutrition)
+
+* **Description:** Developed scalable e-commerce platforms with high traffic
+* **Tech Used:** React.js, Tailwind CSS
+* **Impact:** Generated 37K+ monthly visitors
+
+---
+
+## 🌐 Connect With Me
+
+* LinkedIn: [https://www.linkedin.com/in/chiragmathurid/](https://www.linkedin.com/in/chiragmathurid/)
+* GitHub: [https://github.com/chiragmathurid](https://github.com/chiragmathurid)
+* Portfolio Website:
+
+---
+
+⭐ If you like my work, consider giving a star to my repositories!
