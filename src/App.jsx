@@ -7,13 +7,13 @@ const App = () => {
     {
       title: 'Startwith',
       desc: 'An AI Interviewer',
-      img: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1065&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+      img: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1065&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       link: 'https://startwith.co/'
     },
     {
       title: 'Gridfigure',
       desc: 'A Portfolio Website',
-      img: 'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+      img: 'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       link: 'https://gridfigure.vercel.app/'
     },
     {
@@ -37,9 +37,14 @@ const App = () => {
       {/* Navigation / Header */}
       <nav className="flex justify-between items-center py-6 px-6 md:px-12 max-w-5xl mx-auto">
         <div className="text-xl font-bold tracking-tighter text-white">Chirag.</div>
-        <button className="px-4 py-2 border border-gray-600 hover:border-green-400 hover:text-green-400 rounded-md transition duration-300 text-sm font-medium cursor-pointer">
+        <a
+          href="https://drive.google.com/file/d/1sK-X9OK6YDXxL0xCC8WN4rHXKvL2y-hO/view?usp=share_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-4 py-2 border border-gray-600 hover:border-green-400 hover:text-green-400 rounded-md transition duration-300 text-sm font-medium"
+        >
           Download CV
-        </button>
+        </a>
       </nav>
 
       <main className="max-w-3xl mx-auto px-6 py-12 space-y-24">
@@ -157,7 +162,7 @@ const App = () => {
           </p>
           <div className="flex gap-4 pt-4">
             <a href="https://github.com/chiragmathurid" target="_blank" className="text-gray-400 hover:text-white transition underline underline-offset-4">GitHub</a>
-            <a href="https://www.linkedin.com/in/chiragmathurid/" target="_blank"  className="text-gray-400 hover:text-white transition underline underline-offset-4">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/chiragmathurid/" target="_blank" className="text-gray-400 hover:text-white transition underline underline-offset-4">LinkedIn</a>
             <a href="mailto:chiragmathur.id@gmail.com" className="text-gray-400 hover:text-white transition underline underline-offset-4">Email</a>
           </div>
         </section>
