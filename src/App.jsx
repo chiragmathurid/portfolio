@@ -83,7 +83,7 @@ const App = () => {
             {['HTML 5', 'CSS 3', 'Javascript', 'Typescript', 'React.js', 'Next.js', 'Node.js', 'Express.js', 'Material UI', 'Git', 'Github', 'Tailwind CSS', 'Redux Toolkit', 'Context API', 'Postman', 'Chrome DevTools', 'Lighthouse', 'Figma'].map((tech) => (
               <span
                 key={tech}
-                className="px-4 py-2 bg-gray-800 text-gray-300 rounded-full text-sm font-medium border border-gray-700 hover:border-green-400 hover:text-white transition duration-300 cursor-default"
+                className="px-4 py-2 bg-gray-800 text-gray-300 rounded-2xl text-sm font-medium border border-gray-700 transition duration-300 cursor-default"
               >
                 {tech}
               </span>
