@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import portfolioFallback from "../server/data/portfolio.json";
 import "./App.css";
 
 const App = () => {
-  const [portfolio, setPortfolio] = useState(null);
-  const [error, setError] = useState("");
+  const [portfolio, setPortfolio] = useState(portfolioFallback);
   const projectsRef = useRef(null);
 
   useEffect(() => {
@@ -13,16 +13,10 @@ const App = () => {
         return response.json();
       })
       .then(setPortfolio)
-      .catch((requestError) => setError(requestError.message));
+      .catch((requestError) => {
+        console.error("Portfolio API unavailable; using bundled portfolio data.", requestError);
+      });
   }, []);
-
-  if (error) {
-    return <main className="status-screen"><p>{error}</p><button onClick={() => window.location.reload()}>Try again</button></main>;
-  }
-
-  if (!portfolio) {
-    return <main className="status-screen"><span className="loader" /><p>Loading portfolio…</p></main>;
-  }
 
   const scrollProjects = (amount) => projectsRef.current?.scrollBy({ left: amount, behavior: "smooth" });
 
