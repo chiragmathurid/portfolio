@@ -1,0 +1,33 @@
+{
+  "name": "Chirag Mathur",
+  "email": "chiragmathur.id@gmail.com",
+  "location": "Bengaluru, Karnataka",
+  "resumeUrl": "https://drive.google.com/file/d/18H--Kl9O7bGYIMBlca2MFOAs3W4S2j2B/view?usp=sharing",
+  "summary": "Backend Engineer with 3+ years of experience architecting high-performance microservices and APIs for fast-moving SaaS products.",
+  "ticker": ["Node.js", "Nest.js", "TypeScript", "PostgreSQL", "Microservices"],
+  "experience": [
+    {"role":"SDE 1 Backend / Full-Stack","company":"Startwith","period":"Oct 2025 — Oct 2026","location":"Bengaluru","highlights":["Designed and maintained backend microservices powering real-time conversational AI interview workflows.","Built secure RESTful and GraphQL APIs for candidate data, session management, and streaming SDK integrations.","Architected PostgreSQL schemas and implemented JWT/OAuth flows, Jest testing, Docker, and CI/CD pipelines."]},
+    {"role":"Software Developer","company":"hellodeals.shop","period":"Feb 2025 — Sep 2025","location":"Remote · USA","highlights":["Engineered scalable Node.js, Express.js, and TypeScript endpoints for high-throughput real-time integrations.","Integrated an AI-powered natural language search service with Next.js, OpenAI API, and SerpAPI, reducing latency by 80%.","Optimized MongoDB schemas and queries for a system handling 250+ concurrent users."]}
+    ,{"role":"Founder and Lead Developer","company":"Gridfigure","period":"Oct 2023 — Jan 2025","location":"Bengaluru","highlights":["Founded a software development agency, building secure full-stack architectures and backend services for 14+ client projects.","Developed e-commerce platforms including Kalodoro and SCNutrition, backed by Node.js APIs and relational/non-relational databases, serving 37K+ monthly visitors.","Implemented secure payment processing, third-party API integrations, and role-based access control with JWT/OAuth.","Automated deployment and version control pipelines using Git, GitHub, and cloud platforms, maintaining 99.9% system uptime."]}
+  ],
+  "skills": [
+    {"label":"Backend & APIs","items":["Node.js","Nest.js","Express.js","REST","GraphQL","JWT / OAuth"]},
+    {"label":"Languages","items":["TypeScript","JavaScript","Python","HTML5","SCSS"]},
+    {"label":"Data & Cloud","items":["PostgreSQL","MongoDB","DynamoDB","AWS","Docker","CI/CD"]},
+    {"label":"Frontend & tools","items":["React","Next.js","Angular","Redux","Tailwind CSS","Jest"]}
+  ],
+  "projects": [
+    {"number":"01","shortName":"startwith","title":"Startwith","description":"AI interviewer platform","link":"https://startwith.co/","color":"#d8f46b"},
+    {"number":"02","shortName":"gridfigure","title":"Gridfigure","description":"Portfolio experience","link":"https://gridfigure.vercel.app/","color":"#b9d9f0"},
+    {"number":"03","shortName":"headstart","title":"Headstart","description":"Business consultant website","link":"https://headstartco.netlify.app/","color":"#f2bda6"},
+    {"number":"04","shortName":"dashboard","title":"Dashboard","description":"Interactive data dashboard","link":"https://app-reactdashboard.netlify.app/","color":"#d8c6ee"}
+  ],
+  "education": [
+    {"degree":"Master of Computer Application","school":"Manipal Institute of Technology, Udupi","period":"2021 — 2023"},
+    {"degree":"Bachelor of Computer Application","school":"St. Xavier’s College, Jaipur","period":"2017 — 2020"}
+  ],
+  "links": [
+    {"label":"LinkedIn","url":"https://www.linkedin.com/in/chiragmathurid/"},
+    {"label":"GitHub","url":"https://github.com/chiragmathurid"}
+  ]
+}

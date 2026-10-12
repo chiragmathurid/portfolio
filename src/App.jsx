@@ -1,177 +1,89 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 const App = () => {
-  //Projects
-  const projects = [
-    {
-      title: 'Startwith',
-      desc: 'An AI Interviewer',
-      img: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1065&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      link: 'https://startwith.co/'
-    },
-    {
-      title: 'Gridfigure',
-      desc: 'A Portfolio Website',
-      img: 'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      link: 'https://gridfigure.vercel.app/'
-    },
-    {
-      title: 'Headstart',
-      desc: 'A Business Consultant Website',
-      img: 'https://plus.unsplash.com/premium_photo-1723795245209-10e3b083ea9a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      link: 'https://headstartco.netlify.app/'
-    },
-    {
-      title: 'Dashboard',
-      desc: 'An Interactive Dashboard',
-      img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1715&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      link: 'https://app-reactdashboard.netlify.app/'
-    }
-  ];
+  const [portfolio, setPortfolio] = useState(null);
+  const [error, setError] = useState("");
+  const projectsRef = useRef(null);
 
-  const scrollRef = useRef(null);
+  useEffect(() => {
+    fetch("/api/portfolio")
+      .then((response) => {
+        if (!response.ok) throw new Error("Portfolio content could not be loaded.");
+        return response.json();
+      })
+      .then(setPortfolio)
+      .catch((requestError) => setError(requestError.message));
+  }, []);
+
+  if (error) {
+    return <main className="status-screen"><p>{error}</p><button onClick={() => window.location.reload()}>Try again</button></main>;
+  }
+
+  if (!portfolio) {
+    return <main className="status-screen"><span className="loader" /><p>Loading portfolio…</p></main>;
+  }
+
+  const scrollProjects = (amount) => projectsRef.current?.scrollBy({ left: amount, behavior: "smooth" });
 
   return (
-    <div className="min-h-screen bg-[#0d1117] text-gray-200 font-sans selection:bg-green-500 selection:text-white">
-      {/* Navigation / Header */}
-      <nav className="flex justify-between items-center py-6 px-6 md:px-12 max-w-5xl mx-auto">
-        <div className="text-xl font-bold tracking-tighter text-white">Chirag.</div>
-        <a
-          href="https://drive.google.com/file/d/1sK-X9OK6YDXxL0xCC8WN4rHXKvL2y-hO/view?usp=share_link"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-4 py-2 border border-gray-600 hover:border-green-400 hover:text-green-400 rounded-md transition duration-300 text-sm font-medium"
-        >
-          Download CV
-        </a>
-      </nav>
+    <div className="site-shell">
+      <header className="nav container">
+        <a className="wordmark" href="#top">{portfolio.name.split(" ")[0]}<span>.</span></a>
+        <nav className="nav-links" aria-label="Main navigation">
+          <a href="#work">Work</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a className="button button-small" href={portfolio.resumeUrl} target="_blank" rel="noreferrer">Download CV <span>↗</span></a>
+      </header>
 
-      <main className="max-w-3xl mx-auto px-6 py-12 space-y-24">
-
-        {/* Hero Section */}
-        <section className="space-y-4 animate-fade-in-up">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white">
-            Hi there 👋, I'm-<br />
-            <span className="text-green-400">Chirag</span>
-          </h1>
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-400">
-            Frontend Developer.
-          </h2>
-          <p className="text-lg md:text-xl text-gray-400 max-w-xl">
-            I design and develop beautiful things.
-          </p>
+      <main id="top">
+        <section className="hero container">
+          <p className="eyebrow">Available for backend & full-stack opportunities <span className="availability-dot" /></p>
+          <h1>Building systems<br /><em>that scale.</em></h1>
+          <div className="hero-bottom">
+            <p className="hero-summary">{portfolio.summary}</p>
+            <a className="text-link" href="#contact">Let&apos;s work together <span>↗</span></a>
+          </div>
         </section>
 
-        {/* About Section */}
-        <section className="space-y-4">
-          <h3 className="text-2xl font-bold text-white flex items-center gap-2">
-            About Myself 👨‍💻
-          </h3>
-          <p className="text-gray-400 leading-relaxed text-lg">
-            Frontend Developer with 3 years of experience building scalable and high-performance web applications using
-            React.js, Next.js, and modern JavaScript. Skilled in designing clean, responsive UI architectures, optimizing performance, and delivering user-centric solutions in fast-paced environments.
-          </p>
+        <section className="ticker" aria-label="Core technologies">
+          <div className="ticker-track">{portfolio.ticker.concat(portfolio.ticker).map((item, index) => <span key={`${item}-${index}`}>{item} <b>✦</b></span>)}</div>
         </section>
 
-        {/* Tech Stack Section */}
-        <section className="space-y-6">
-          <h3 className="text-2xl font-bold text-white flex items-center gap-2">
-            My Tech Stack 💻
-          </h3>
-          <div className="flex flex-wrap gap-3">
-            {['HTML 5', 'CSS 3', 'Javascript', 'Typescript', 'React.js', 'Next.js', 'Node.js', 'Express.js', 'Material UI', 'Git', 'Github', 'Tailwind CSS', 'Redux Toolkit', 'Context API', 'Postman', 'Chrome DevTools', 'Lighthouse', 'Figma'].map((tech) => (
-              <span
-                key={tech}
-                className="px-4 py-2 bg-gray-800 text-gray-300 rounded-2xl text-sm font-medium border border-gray-700 transition duration-300 cursor-default"
-              >
-                {tech}
-              </span>
+        <section className="section container" id="work">
+          <div className="section-heading"><p className="eyebrow">01 / Experience</p><h2>Where I&apos;ve made<br /><em>an impact.</em></h2></div>
+          <div className="experience-list">
+            {portfolio.experience.map((job) => (
+              <article className="experience-item" key={`${job.company}-${job.role}`}>
+                <div className="experience-meta"><span>{job.period}</span><span>{job.location}</span></div>
+                <div className="experience-content"><h3>{job.role}</h3><p className="company">{job.company}</p><ul>{job.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}</ul></div>
+              </article>
             ))}
           </div>
         </section>
 
-        {/* Projects Section */}
-        <section className="space-y-6">
-          {/* Title + Arrows Row */}
-          <div className="flex items-center justify-between">
-            <h3 className="text-2xl font-bold text-white flex items-center gap-2">
-              My Projects 🚀
-            </h3>
-
-            {/* Arrows */}
-            <div className="hidden md:flex items-center gap-2">
-              <button
-                onClick={() => scrollRef.current.scrollBy({ left: -300, behavior: "smooth" })}
-                className="bg-white/10 backdrop-blur-md border border-gray-600 hover:border-green-400 p-2 w-10 h-10 rounded-full transition cursor-pointer"
-              >
-                ◀
-              </button>
-              <button
-                onClick={() => scrollRef.current.scrollBy({ left: 300, behavior: "smooth" })}
-                className="bg-white/10 backdrop-blur-md border border-gray-600 hover:border-green-400 p-2 w-10 h-10 rounded-full transition cursor-pointer"
-              >
-                ▶
-              </button>
-            </div>
-          </div>
-
-          {/* Scroll Container */}
-          <div
-            ref={scrollRef}
-            className="flex gap-6 overflow-x-auto scrollbar-hide pt-2"
-          >
-            {projects.map((project, index) => (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="min-w-70 bg-white rounded-3xl overflow-hidden hover:shadow-xl hover:shadow-black/50 hover:-translate-y-1 transition-all duration-300 cursor-pointer active:scale-95"
-              >
-                {/* Image */}
-                <div className="h-60 w-full bg-gray-200">
-                  <img
-                    src={project.img}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                {/* Content */}
-                <div className="p-5">
-                  <h4 className="text-lg font-semibold text-gray-900">
-                    {project.title}
-                  </h4>
-                  <p className="text-gray-600 mt-1 text-sm">
-                    {project.desc}
-                  </p>
-                </div>
-              </a>
-            ))}
+        <section className="section section-dark" id="skills">
+          <div className="container">
+            <div className="section-heading"><p className="eyebrow">02 / Expertise</p><h2>Tools for the<br /><em>real world.</em></h2></div>
+            <div className="skills-grid">{portfolio.skills.map((group) => <div className="skill-group" key={group.label}><p>{group.label}</p><div>{group.items.map((skill) => <span key={skill}>{skill}</span>)}</div></div>)}</div>
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section className="space-y-4 pb-12">
-          <h3 className="text-2xl font-bold text-white flex items-center gap-2">
-            Find me online 🌐
-          </h3>
-          <p className="text-gray-400 leading-relaxed text-lg">
-            Let's stay connected! Whether you want to chat code, collaborate on a project,
-            or just say hi — you'll find me hanging out here. Drop a message anytime!
-          </p>
-          <div className="flex gap-4 pt-4">
-            <a href="https://github.com/chiragmathurid" target="_blank" className="text-gray-400 hover:text-white transition underline underline-offset-4">GitHub</a>
-            <a href="https://www.linkedin.com/in/chiragmathurid/" target="_blank" className="text-gray-400 hover:text-white transition underline underline-offset-4">LinkedIn</a>
-            <a href="mailto:chiragmathur.id@gmail.com" className="text-gray-400 hover:text-white transition underline underline-offset-4">Email</a>
-          </div>
+        <section className="section container projects-section">
+          <div className="section-heading project-heading"><div><p className="eyebrow">03 / Selected work</p><h2>Things I&apos;ve <em>shipped.</em></h2></div><div className="slider-controls"><button onClick={() => scrollProjects(-340)} aria-label="Previous project">←</button><button onClick={() => scrollProjects(340)} aria-label="Next project">→</button></div></div>
+          <div className="projects-row" ref={projectsRef}>{portfolio.projects.map((project) => <a className="project-card" href={project.link} target="_blank" rel="noreferrer" key={project.title}><div className="project-art" style={{ background: project.color }}><span>{project.number}</span><strong>{project.shortName}</strong></div><div className="project-info"><div><h3>{project.title}</h3><p>{project.description}</p></div><span className="arrow">↗</span></div></a>)}</div>
         </section>
+
+        <section className="section about-section container">
+          <p className="eyebrow">04 / Beyond the code</p>
+          <div className="about-grid"><h2>Curious by<br /><em>default.</em></h2><div><p>I care about the details people feel but rarely notice: a fast response, a resilient API, and a product that stays out of the way.</p><div className="education-list">{portfolio.education.map((item) => <div key={item.degree}><span>{item.period}</span><strong>{item.degree}</strong><small>{item.school}</small></div>)}</div></div></div>
+        </section>
+
+        <section className="contact-section" id="contact"><div className="container"><p className="eyebrow">05 / Start a conversation</p><h2>Have a challenge<br /><em>worth solving?</em></h2><a className="email-link" href={`mailto:${portfolio.email}`}>{portfolio.email} <span>↗</span></a><div className="contact-footer"><span>{portfolio.location}</span><div>{portfolio.links.map((link) => <a href={link.url} target="_blank" rel="noreferrer" key={link.label}>{link.label}</a>)}</div></div></div></section>
       </main>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-800 py-8 text-center text-gray-500 text-sm">
-        Made with 💚 by Chirag Mathur
-      </footer>
+      <footer className="footer container"><span>© {new Date().getFullYear()} {portfolio.name}</span><span>Built with intention.</span></footer>
     </div>
   );
 };
