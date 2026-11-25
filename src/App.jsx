@@ -34,8 +34,8 @@ const App = () => {
 
       <main id="top">
         <section className="hero container">
-          <p className="eyebrow">Available for backend & full-stack opportunities <span className="availability-dot" /></p>
-          <h1>Building systems<br /><em>that scale.</em></h1>
+          <p className="eyebrow">Available for AI & full-stack engineering roles <span className="availability-dot" /></p>
+          <h1>Building AI systems<br /><em>that scale.</em></h1>
           <div className="hero-bottom">
             <p className="hero-summary">{portfolio.summary}</p>
             <a className="text-link" href="#contact">Let&apos;s work together <span>↗</span></a>
